@@ -49,6 +49,7 @@ class BBLoggerMixin(object):
         if isinstance(args[0], int):
             lvl = args[0]
             args = args[1:]
+            mainlogger.warning("change the loglevel using '%d' in first argumets is deprecated please use 'debug/debug2/debug3'" % lvl)
         return self.bbdebug(lvl, *args, **kwargs)
 
     def debug2(self, *args, **kwargs):
