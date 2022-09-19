@@ -45,7 +45,11 @@ class BBLoggerMixin(object):
             self.debug = self._debug_helper
 
     def _debug_helper(self, *args, **kwargs):
-        return self.bbdebug(1, *args, **kwargs)
+        lvl = 1
+        if isinstance(args[0], int):
+            lvl = args[0]
+            args = args[1:]
+        return self.bbdebug(lvl, *args, **kwargs)
 
     def debug2(self, *args, **kwargs):
         return self.bbdebug(2, *args, **kwargs)
