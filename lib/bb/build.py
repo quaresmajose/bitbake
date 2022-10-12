@@ -253,6 +253,9 @@ def exec_func(func, d, dirs = None):
                 pass
 
     with bb.utils.fileslocked(lockfiles):
+        if lockfiles:
+            bb.verbnote("Task locked with lockfiles")
+
         if ispython:
             exec_func_python(func, d, runfile, cwd=adir)
         else:
