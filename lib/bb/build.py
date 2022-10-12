@@ -217,7 +217,9 @@ def exec_func(func, d, dirs = None):
 
     lockflag = flags.get('lockfiles')
     if lockflag:
-        lockfiles = [f for f in d.expand(lockflag).split()]
+        expandlockfiles = d.expand(lockflag)
+        bb.debug(2, "Task lock files: %s" % expandlockfiles)
+        lockfiles = [f for f in expandlockfiles.split()]
     else:
         lockfiles = None
 
